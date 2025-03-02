@@ -26,6 +26,7 @@ vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 
+
 vim.keymap.set("n", "<leader>q",vim.cmd.Ex) 
 --vim.keymap.set("n", "<leader>=","<S-Down>gvvgg=<Esc>")
 vim.keymap.set("n", "<leader>=","<S-Down>Gvgg=<Esc>")
@@ -40,5 +41,12 @@ require("lazy").setup({
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "habamax" } },
   -- automatically check for plugin updates
-  checker = { enabled = true },
+  checker = { 
+    -- automatically check for plugin updates
+    enabled = false,
+    concurrency = nil, ---@type number? set to 1 to check for updates very slowly
+    notify = true, -- get a notification when new updates are found
+    frequency = 3600, -- check for updates every hour
+    check_pinned = false, -- check for pinned packages that can't be updated
+  },
 })
